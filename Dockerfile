@@ -1,7 +1,10 @@
-# Use the official Nginx image
+# Use official Nginx image
 FROM nginx:alpine
 
-# Copy all website files into Nginx HTML folder
+# Remove default Nginx content
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy all files from current directory into Nginx web root
 COPY . /usr/share/nginx/html
 
 # Expose port 80
